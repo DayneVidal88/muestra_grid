@@ -1,0 +1,94 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: minmax(120px, 120px) minmax(300px, 2fr) 1fr;
+  grid-template-rows: 60px 1fr 1fr 1fr 40px;
+  grid-template-areas:
+    "header header header"
+    "nav widget-1 widget-3"
+    "nav widget-2 widget-3"
+    "nav anuncio anuncio"
+    "footer footer footer";
+  column-gap: 15px;
+  row-gap: 5px;
+  height: 100vh;
+}
+
+.i-header { grid-area: header; }
+.i-nav { grid-area: nav; }
+.i-widget-1 { grid-area: widget-1; }
+.i-widget-2 { grid-area: widget-2; }
+.i-widget-3 { grid-area: widget-3; }
+.i-widget-4 { grid-area: widget-4; }
+.i-anuncio { grid-area: anuncio; }
+.i-footer { grid-area: footer; }
+
+/* Widget 3 ocupa filas 2 y 3 en la columna 3 */
+.i-widget-3 {
+  grid-column: 3;
+  grid-row: 2 / 4; /* de la línea 2 a la 4 */
+}
+
+/* Widget 4 ocupa el espacio restante en la columna 3 */
+.i-widget-4 {
+  grid-column: 3;
+  grid-row: 4;
+}
+.i-header, .i-footer {
+  display: grid;
+  align-items: center; /* centra verticalmente */
+  padding: 0 10px;
+}
+
+.i-widget-2 {
+  display: grid;
+  place-items: center; /* centra horizontal y vertical */
+}
+
+.notificacion {
+  grid-area: header;
+  justify-self: end;
+  align-self: start;
+  z-index: 10;
+  background: rgb(118, 96, 32);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.i-header, .i-footer {
+  background-color: #222;
+  color: #fff;
+}
+
+.i-nav {
+  background-color: #f4f4f4;
+  border-right: 2px solid #ddd;
+}
+
+.i-footer {
+  grid-column: 1 / -1; /* ocupa todas las columnas */
+}
+
+.i-widget-1 { background-color: #ffeb3b; }
+.i-widget-2 { background-color: #4caf50; color: #fff; }
+.i-widget-3 { background-color: #2196f3; color: #fff; }
+.i-widget-4 { background-color: #9c27b0; color: #fff; }
+.i-anuncio { background-color: #ff5722; color: #fff; }
+
+@media (max-width: 700px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "header"
+      "nav"
+      "widget-1"
+      "widget-2"
+      "widget-3"
+      "widget-4"
+      "anuncio"
+      "footer";
+  }
+}
